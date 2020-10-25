@@ -30,10 +30,19 @@ function "run_${$(basename "$(readlink -f "${(%):-%x}")")%%.*}"(){
 
   ./autogen.sh
 
+  #auto-apt ./configure
   ./configure
 
   make
 
+  #base_name="$(basename "$(cd "$(dirname "$(readlink -f "${(%):-%x}")")" >/dev/null 2>&1 && pwd)")"
+  #version="12345"
+  #mkdir -p /tmp/man/doc-pak
+  #doc_dir_path="/tmp/man"
+  #checkinstall -D --install=yes --pkgname="${base_name}" \
+  #--pkgversion="${version}" --docdir="${doc_dir_path}" \
+  #--showinstall=no
+  #strace -f -t -e trace=file
   make install
 
   ldconfig
